@@ -12,9 +12,10 @@ if (isset($_POST['update'])) //recupere données de nouveauCR.php
         $date=$_POST['date'];
         $contenu= addslashes($_POST['contenu']);
         $id=$_SESSION["id"];
+        $note=$_POST['note'];
 $connexion = mysqli_connect($serveurBDD,$userBDD,$mdpBDD,$nomBDD);
-        $requete="INSERT INTO CR (date,datetime,description,num_utilisateur) VALUES ('$date',NOW(),'$contenu','$id');"; //crée nouveau compte rendu avec infos recuperees
-echo "<br>$requete<hr>";
+        $requete="INSERT INTO CR (date,datetime,description,num_utilisateur,note) VALUES ('$date',NOW(),'$contenu','$id',$note);"; //crée nouveau compte rendu avec infos recuperees
+//echo "<br>$requete<hr>";
         if(!mysqli_query($connexion,$requete)) 
             {
             echo "erreur";
@@ -68,10 +69,11 @@ if ($_SESSION["type"] ==1) //si connexion en prof
             $num=$donnees['num'];
             $contenu=$donnees['description'];
             $nom=$donnees['nom'];
+            $note=$donnees['note'];
             
             
             echo "<table border=2><thead> <tr> <th colspan=2> <u>Compte rendu n°$num de $nom</u> </th> </tr> </thead>
-            <tbody> <tr> <td>  $contenu</td> </tr> <tr> <td> <a href='modif.php?id=$num'>Modifier</a> </td> </tr> </tbody> </table> <br>";  //affiche tous les compte rendus du plus recent au plus ancien + lien pour modifier
+            <tbody> <tr> <td>  $contenu</td> </tr> <tr> <td>note $note/5 </td> </tr>  <tr> <td> <a href='modif.php?id=$num'>Modifier</a> </td> </tr> </tbody> </table> <br>";  //affiche tous les compte rendus du plus recent au plus ancien + lien pour modifier
           }
     }
  ?>
@@ -83,7 +85,7 @@ else //si connexion en eleve
     
     <ul class="nav">
     <li><a href="accueil.php">Accueil</a></li> 
-    <li><a href="perso.php">Profil</a></li>
+    <li><a href="perso.php">Profil</a></li>                                                                                    
     <li><a href="cr.php">Compte rendus</a></li>
     <li><a href="nouveauCR.php">Nouveau compte-rendu</a></li>
     </ul> 
@@ -98,9 +100,10 @@ else //si connexion en eleve
           {
             $num=$donnees['num'];
             $contenu=$donnees['description'];
+            $note=$donnees['note'];
             
             echo "<table border=2><thead> <tr> <th colspan=2> <u>n°$num</u> </th> </tr> </thead>
-            <tbody> <tr> <td>  $contenu</td> </tr> <tr> <td> <a href='modif.php?id=$num'>Modifier</a> </td> </tr> </tbody> </table> <br>";  //affiche tous les compte rendus du plus recent au plus ancien + lien pour modifier
+            <tbody> <tr> <td> $contenu</td> </tr> <tr> <td>note $note/5 </td> </tr>  <tr> <tr> <td> <a href='modif.php?id=$num'>Modifier</a> </td> </tr> </tbody> </table> <br>";  //affiche tous les compte rendus du plus recent au plus ancien + lien pour modifier
           }
     }
 
