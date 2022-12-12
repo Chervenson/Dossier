@@ -1,0 +1,62 @@
+Question 1: mdp1: Hachage utiliser md5.
+            mdp2: Hachage utiliser SHA256.
+
+Question 2: mdp1: supermanX
+            mdp2: admin
+
+Question 3:  echo 'MD5:          ',
+    crypt('Vive#Les#S1aux', '$1$duSel$'),
+    "\n";
+
+Question 4:  echo 'SHA-256:      ',
+    crypt('Vive#Les#S1aux', '$5$rounds=5000$duSel$'),
+    "\n";
+
+Question 5:  echo 'SHA-512:      ',
+    crypt('Vive#Les#S1aux', '$6$rounds=5000$duSel$'),
+    "\n";
+
+Question 6:    echo 'SHA-256:      ',
+    crypt('Vive#Les#S1aux', '$5$rounds=5000$duSelFin$'),
+    "\n";
+
+
+Question 7:    echo 'SHA-256:      ',
+    crypt('Vive#Les#S1aux', '$5$rounds=5000$duGrosSel$'),
+    "\n";
+
+Question 8:  echo 'SHA-256:      ',
+    password_hash('Vive#Les#S1aux', PASSWORD_BCRYPT),
+    "\n";
+
+Question 9:  $t1 = microtime();
+
+echo 'SHA-256:      ',
+    password_hash('Vive#Les#S1aux', PASSWORD_BCRYPT),
+    "\n";
+$temps = (float) microtime() - (float) $t1;
+echo "duree exécution = $temps \n";
+
+Question 10:  $t1 = microtime();
+$options = [
+    'cost' => 5,
+];
+echo 'SHA-256:      ',
+    password_hash('Vive#Les#S1aux', PASSWORD_BCRYPT, $options),
+    "\n";
+$temps = (float) microtime() - (float) $t1;
+echo "duree exécution = $temps \n";
+
+Question 11: $t1 = microtime();
+$options = [
+    'cost' => 15,
+];
+echo 'SHA-256:      ',
+    password_hash('Vive#Les#S1aux', PASSWORD_BCRYPT, $options),
+    "\n";
+$temps = (float) microtime() - (float) $t1;
+echo "duree exécution = $temps \n";
+
+Question 12: C'est crypter en SHA-512 car $5$rounds=5000$
+
+Question 13: 
