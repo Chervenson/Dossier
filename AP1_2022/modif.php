@@ -98,15 +98,3 @@ echo "<FORM method='post' action='modif.php?id=$id'> ";?>
 //qUAND ON CLICK BOUTON ON FAIT UPDATE
     
 ?>
-
-
-
-
-
-
-
-
-
-
-
-

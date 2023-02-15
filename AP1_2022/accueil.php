@@ -1,3 +1,6 @@
+<?php
+session_start(); 
+?>
  <html>
     <head> <link href="style.css" media="all" rel="stylesheet" type="text/css"/> </head>
     <body>
@@ -5,7 +8,6 @@
 
 <?php
 
-session_start(); 
 include 'conf.php';
 
 if (isset($_POST['envoi'])) //reçois données rentrée lors de la connexion
@@ -15,8 +17,8 @@ if (isset($_POST['envoi'])) //reçois données rentrée lors de la connexion
     $mdp = $_POST['mdp'];
     $mdp= md5($mdp); //crypter le mot de passe
     $connexion = mysqli_connect($serveurBDD,$userBDD,$mdpBDD,$nomBDD);
-    $requete="Select * from UTILISATEUR WHERE login = '$login' AND motdepasse= '$mdp'"; //recupere données utilisateur 
-    //echo "<br> ma req SQL : $requete <br>";
+    $requete="Select * from utilisateur WHERE login = '$login' AND motdepasse= '$mdp'"; //recupere données utilisateur 
+   // echo "<br> ma req SQL : $requete <br>";
     $resultat = mysqli_query($connexion, $requete);
     $trouve=0;
     while($donnees = mysqli_fetch_assoc($resultat))
@@ -84,7 +86,3 @@ if (isset($_SESSION["login"]))
 
 ?>
 </html>
-
-
-   
-
